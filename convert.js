@@ -145,6 +145,11 @@ Fs.readdir('./', function(err, files){
             det5 += det.code;
             det5 += det.det1 || '';
             det5 += det.det5 || '无此信息\r\n\r\n\r\n';
+            
+            if (det.det5) {
+                var fstr = files[i].split(/\./gi);
+                Fs.writeFileSync(dir+'/概念题材-'+fstr[0]+'.txt', (det.code+det.det5).replace(/风  险  提  示[\s\S]*/gi,''));
+            }
         }
     }
     
