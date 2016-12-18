@@ -114,7 +114,7 @@ if (!directory) {
     directory = './';
 }
 
-Fs.readdir('./', function(err, files){
+Fs.readdir(directory, function(err, files){
     if (err) return console.log('Invalid directory:'+err);
     
     var dir = 'result-'+Date.now();
