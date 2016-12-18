@@ -118,6 +118,7 @@ Fs.readdir(directory, function(err, files){
     
     var dir = 'result-'+Date.now();
     var det2 = '', det3 = '', det4 = '', det5 = '';
+    var sum = '';
     
     Fs.mkdirSync(dir);
     console.log('create result directory: ./'+dir);
@@ -128,22 +129,46 @@ Fs.readdir(directory, function(err, files){
         
         if (stats.isFile() && files[i].match(/[0-9]+\.[0-9]+/gi)) {
             det = Convert(files[i], dir);
+            sum  += '\r\n\r\n';
             
+            //            
             det2 += det.code;
             det2 += det.det1 || '';
             det2 += det.det2 || '无此信息\r\n\r\n\r\n';
+            ///
+            sum  += det.code;
+            sum  += det.det1 || '';
+            sum  += det.det2 || '无此信息\r\n\r\n\r\n';
+ 
             
+            //
             det3 += det.code;
             det3 += det.det1 || '';
             det3 += det.det3 || '无此信息\r\n\r\n\r\n';
-            
+            ///
+            sum  += det.code;
+            sum  += det.det1 || '';
+            sum  += det.det3 || '无此信息\r\n\r\n\r\n';
+
+
+            //
             det4 += det.code;
             det4 += det.det1 || '';
             det4 += det.det4 || '无此信息\r\n\r\n\r\n';
+            ///
+            sum  += det.code;
+            sum  += det.det1 || '';
+            sum  += det.det4 || '无此信息\r\n\r\n\r\n';
+
             
             det5 += det.code;
             det5 += det.det1 || '';
             det5 += det.det5 || '无此信息\r\n\r\n\r\n';
+
+            sum  += det.code;
+            sum  += det.det1 || '';
+            sum  += det.det5 || '无此信息\r\n\r\n\r\n';
+
             
             if (det.det5) {
                 var fstr = files[i].split(/\./gi);
@@ -157,6 +182,8 @@ Fs.readdir(directory, function(err, files){
     Fs.writeFileSync(dir+'/最新消息-all.txt', det3);
     Fs.writeFileSync(dir+'/控盘情况-all.txt', det4);
     Fs.writeFileSync(dir+'/概念题材-all.txt', det5);
+    
+    Fs.writeFileSync(dir+'/所有指标-all.txt', sum);
 });
 
 //
