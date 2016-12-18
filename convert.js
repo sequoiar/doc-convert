@@ -1,7 +1,6 @@
 // Copyright (c) 2013 Tom Zhou<iwebpp@gmail.com>
 
 var Fs = require('fs'),
-    Buffer = require('buffer').Buffer,
     Iconv = require('iconv-lite'),
     Jschardet = require("jschardet");
 
